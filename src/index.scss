@@ -1,0 +1,147 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+.header {
+  display: flex;
+  flex-direction: row;
+  color: #fff;
+  background: #1eb7ee;
+  box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.3);
+  &__logo {
+    margin: 0.5% 40% 0.5% 5%;
+    img {
+      height: 60px;
+    }
+  }
+  &__nav {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+
+    &-item {
+      display: flex;
+      flex-direction: row;
+      margin-left: 10%;
+      cursor: pointer;
+      font-size: 20px;
+      line-height: 400%;
+      font-weight: 600;
+    }
+  }
+}
+.Flight {
+  display: flex;
+  justify-content: center;
+}
+.findFlight {
+  display: flex;
+  flex-direction: column;
+  margin: 0, 10px;
+  &__title {
+    margin-top: 10%;
+    line-height: 80px;
+    font-size: 70px;
+    font-weight: 300;
+  }
+  &__form {
+    margin-top: 24px;
+
+    &-btn {
+      text-transform: uppercase;
+      height: 50px;
+      border: none;
+      font-weight: 700;
+      width: 200px;
+      background: #1eb7ee;
+      color: #fff;
+      font-size: 20px;
+      border-radius: 0 100px 0 0;
+      text-align: left;
+      padding: 0 20px;
+    }
+  }
+}
+.svg-inline--fa .fa-search .fa-w-16 {
+  display: block;
+  width: 44px;
+  height: 44px;
+}
+.findFlight__form-input {
+  height: 50px;
+  padding: 0 20px 0 0;
+  border: none;
+  margin-left: 10px;
+  border-radius: 0;
+  font-size: 16px;
+  text-align: left;
+  color: #2f2f2f;
+}
+.departures {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+  &-btn {
+    background: #fff;
+    width: 700px;
+    height: 60px;
+    border-radius: 60px 60px 0 0;
+    z-index: 1;
+    margin-right: -60px;
+    text-align: center;
+  }
+
+  &-link {
+    color: #1eb7ee;
+    line-height: 60px;
+    font-size: 24px;
+  }
+}
+.nav-tabs {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 50vh;
+  padding: 0;
+  margin: auto;
+  margin-top: 40px;
+  list-style: none;
+  a {
+    text-decoration: none;
+  }
+}
+.arrivals-btn {
+  background: #1eb7ee;
+  width: 700px;
+  height: 60px;
+  border-radius: 0 60px 0 0;
+  text-align: center;
+}
+.arrivals-link {
+  line-height: 60px;
+  color: #fff;
+  font-size: 24px;
+}
+.planes {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+.title {
+  &-item {
+    opacity: 0.5;
+  }
+}
+.aviacompany {
+  display: flex;
+  align-items: center;
+  &__logo {
+    width: 63px;
+    height: 38px;
+  }
+  &__name {
+    display: block;
+    line-height: 38px;
+    height: 100%;
+  }
+}
