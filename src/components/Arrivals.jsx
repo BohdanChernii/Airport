@@ -3,7 +3,7 @@ import React from "react";
 import moment from "moment";
 const Arrivals = ({ arrival }) => {
   if (arrival.length === 0) {
-    return <p>Not Found</p>;
+    return <p className="not-found">Прильотів не знайдено</p>;
   }
   return (
     <div className="planes">
