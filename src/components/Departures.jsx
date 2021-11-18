@@ -1,11 +1,14 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import moment from "moment";
 
-const Departures = ({ departure }) => {
+const Departures = ({ input, departure }) => {
   if (!departure || departure.length === 0) {
     return <p className="not-found">Вильотів не знайдено</p>;
   }
-
+  // const [url, setUrl] = useState("");
+  // const currentRoute = location.pathname;
+  // setUrl(input);
+  // console.log(currentRoute);
   return (
     <div className="planes">
       <table className="flights__table">

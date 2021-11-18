@@ -1,5 +1,5 @@
-import React from "react";
-
+import React, { useState, useEffect } from "react";
+import history from "./History";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -8,7 +8,7 @@ const FindFlight = ({ search, input, handleChange }) => {
     <section className="Flight">
       <div className="findFlight">
         <h2 className="findFlight__title">ПОШУК РЕЙСУ</h2>
-        <form className="findFlight__form">
+        <form className="findFlight__form" onSubmit={search}>
           <FontAwesomeIcon icon={faSearch}></FontAwesomeIcon>
           <input
             type="text"
@@ -18,7 +18,7 @@ const FindFlight = ({ search, input, handleChange }) => {
             onChange={handleChange}
           />
 
-          <button onClick={search} className="findFlight__form-btn">
+          <button type="submit" className="findFlight__form-btn">
             Знайти
           </button>
         </form>
