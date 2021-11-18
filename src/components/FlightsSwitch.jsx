@@ -9,14 +9,22 @@ const FlightsSwitch = () => {
   return (
     <ul className="nav nav-tabs">
       <li className="departures-btn">
-        <NavLink to="/departures" className="departures-link">
+        <NavLink
+          to="/departures"
+          activeclassname="active"
+          className="departures-link"
+        >
           <FontAwesomeIcon icon={faPlaneDeparture}></FontAwesomeIcon>
           {` `}Виліт
         </NavLink>
       </li>
 
       <li className="arrivals-btn">
-        <NavLink to="/arrivals" className="arrivals-link">
+        <NavLink
+          to="/arrivals"
+          activeclassname="active"
+          className="arrivals-link"
+        >
           <FontAwesomeIcon icon={faPlaneArrival}></FontAwesomeIcon>
           {` `}Приліт
         </NavLink>

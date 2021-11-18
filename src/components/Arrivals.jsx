@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import moment from "moment";
 const Arrivals = ({ arrival }) => {
-  if (arrival.length === 0) {
+  if (!arrival || arrival.length === 0) {
     return <p className="not-found">Прильотів не знайдено</p>;
   }
   return (

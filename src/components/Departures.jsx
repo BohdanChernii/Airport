@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import moment from "moment";
+
 const Departures = ({ departure }) => {
-  if (departure.length === 0) {
+  if (!departure || departure.length === 0) {
     return <p className="not-found">Вильотів не знайдено</p>;
   }
+
   return (
     <div className="planes">
       <table className="flights__table">

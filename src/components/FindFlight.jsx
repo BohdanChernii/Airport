@@ -3,7 +3,7 @@ import React from "react";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const FindFlight = ({ search, handleChange, input }) => {
+const FindFlight = ({ search, input, handleChange }) => {
   return (
     <section className="Flight">
       <div className="findFlight">
