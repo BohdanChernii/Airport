@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from "react";
 import moment from "moment";
 
-const Departures = ({ input, departure }) => {
+const Departures = ({ departure }) => {
   if (!departure || departure.length === 0) {
     return <p className="not-found">Вильотів не знайдено</p>;
   }
-  // const [url, setUrl] = useState("");
-  // const currentRoute = location.pathname;
-  // setUrl(input);
-  // console.log(currentRoute);
+  // const [filterFlights, setFilterFlights] = useState("");
+  // useEffect(() => {
+  //   const params = new URLSearchParams();
+  //   const search = params.get("search");
+  //   setFilterFlights(search ? search : "");
+  // });
   return (
     <div className="planes">
       <table className="flights__table">

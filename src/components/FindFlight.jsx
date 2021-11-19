@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import history from "./History";
+import React from "react";
+
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 

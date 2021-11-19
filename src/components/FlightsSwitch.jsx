@@ -5,12 +5,13 @@ import {
   faPlaneArrival,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-const FlightsSwitch = () => {
+const FlightsSwitch = ({ input }) => {
   return (
     <ul className="nav nav-tabs">
       <li className="departures-btn">
         <NavLink
-          to="/departures"
+          to={`/departures?search=${input}`}
+          href="/departures"
           activeclassname="active"
           className="departures-link"
         >
@@ -21,7 +22,8 @@ const FlightsSwitch = () => {
 
       <li className="arrivals-btn">
         <NavLink
-          to="/arrivals"
+          to={`/arrivals?search=${input}`}
+          href="/arrivals"
           activeclassname="active"
           className="arrivals-link"
         >

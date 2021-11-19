@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import store from "./store";
 import Airport from "./components/Airport";
 import { Provider } from "react-redux";

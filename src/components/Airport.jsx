@@ -7,15 +7,20 @@ import Departures from "./Departures";
 import { allFlights } from "../flights/flights.selectors.js";
 import { fetchFlightsData } from "../flights/flights.actions.js";
 import { connect } from "react-redux";
-import history from "./History";
+import History from "./History";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 function Airport({ flights, fetchFlightsData }) {
   const { arrival, departure } = flights;
   useEffect(() => fetchFlightsData(), []);
+
   const [arrivals, setArrivals] = useState(arrival);
   const [departures, setDepartures] = useState(departure);
   const [input, setInput] = useState("");
-
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const search = params.get("search");
+    setInput(search ? search : "");
+  }, []);
   useEffect(() => {
     setArrivals(arrival);
     setDepartures(departure);
@@ -29,6 +34,7 @@ function Airport({ flights, fetchFlightsData }) {
 
   const searchPlanes = (e) => {
     e.preventDefault();
+
     const filterArrivals = arrival.filter((item) =>
       item["planeTypeID.code"].toLowerCase().includes(input.toLowerCase())
     );
@@ -38,10 +44,8 @@ function Airport({ flights, fetchFlightsData }) {
       item["planeTypeID.code"].toLowerCase().includes(input.toLowerCase())
     );
     setDepartures(filterDepartures);
-    setPlane(input);
-    history.push(`/?` + input);
   };
-
+  console.log(departures);
   return (
     <BrowserRouter>
       <div className="page">
@@ -51,12 +55,18 @@ function Airport({ flights, fetchFlightsData }) {
           handleChange={handleChange}
           input={input}
         />
-        <FlightsSwitch />
+        <FlightsSwitch input={input} />
         <Routes>
           <Route exact path="/" element={null} />
           <Route
             path="/departures"
-            element={<Departures input={input} departure={departures} />}
+            element={
+              <Departures
+                input={input}
+                departure={departures}
+                setInput={setInput}
+              />
+            }
           />
           <Route
             path="/arrivals"
