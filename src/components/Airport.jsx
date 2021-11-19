@@ -7,7 +7,6 @@ import Departures from "./Departures";
 import { allFlights } from "../flights/flights.selectors.js";
 import { fetchFlightsData } from "../flights/flights.actions.js";
 import { connect } from "react-redux";
-import History from "./History";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 function Airport({ flights, fetchFlightsData }) {
   const { arrival, departure } = flights;
