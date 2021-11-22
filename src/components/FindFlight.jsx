@@ -5,20 +5,20 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const FindFlight = ({ search, input, handleChange }) => {
   return (
-    <section className="Flight">
-      <div className="findFlight">
-        <h2 className="findFlight__title">ПОШУК РЕЙСУ</h2>
-        <form className="findFlight__form" onSubmit={search}>
+    <section className="flight">
+      <div className="flight__find">
+        <h2 className="flight__find-title">ПОШУК РЕЙСУ</h2>
+        <form className="flight__find-form form" onSubmit={search}>
           <FontAwesomeIcon icon={faSearch}></FontAwesomeIcon>
           <input
             type="text"
-            className="findFlight__form-input"
+            className="form-input"
             placeholder="Номер рейсу або місто"
             value={input}
             onChange={handleChange}
           />
 
-          <button type="submit" className="findFlight__form-btn">
+          <button type="submit" className="form-btn">
             Знайти
           </button>
         </form>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import {
   faPlaneDeparture,
@@ -7,31 +7,27 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const FlightsSwitch = ({ input }) => {
   return (
-    <ul className="nav nav-tabs">
-      <li className="departures-btn">
-        <NavLink
-          to={`/departures?search=${input}`}
-          href="/departures"
-          activeclassname="active"
-          className="departures-link"
-        >
-          <FontAwesomeIcon icon={faPlaneDeparture}></FontAwesomeIcon>
-          {` `}Виліт
-        </NavLink>
-      </li>
+    <div className="switchFlights">
+      <NavLink
+        to={`/departures?search=${input}`}
+        href="/departures"
+        activeclassname="active"
+        className="switchFlights__item switchFlights__item-departure"
+      >
+        <FontAwesomeIcon icon={faPlaneDeparture}></FontAwesomeIcon>
+        {` `}Виліт
+      </NavLink>
 
-      <li className="arrivals-btn">
-        <NavLink
-          to={`/arrivals?search=${input}`}
-          href="/arrivals"
-          activeclassname="active"
-          className="arrivals-link"
-        >
-          <FontAwesomeIcon icon={faPlaneArrival}></FontAwesomeIcon>
-          {` `}Приліт
-        </NavLink>
-      </li>
-    </ul>
+      <NavLink
+        to={`/arrivals?search=${input}`}
+        href="/arrivals"
+        activeclassname="active"
+        className="switchFlights__item switchFlights__item-arrival"
+      >
+        <FontAwesomeIcon icon={faPlaneArrival}></FontAwesomeIcon>
+        {` `}Приліт
+      </NavLink>
+    </div>
   );
 };
 export default FlightsSwitch;

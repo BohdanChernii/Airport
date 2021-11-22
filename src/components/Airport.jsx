@@ -4,6 +4,7 @@ import FindFlight from "./FindFlight";
 import FlightsSwitch from "./FlightsSwitch";
 import Arrivals from "./Arrivals";
 import Departures from "./Departures";
+import History from "./History";
 import { allFlights } from "../flights/flights.selectors.js";
 import { fetchFlightsData } from "../flights/flights.actions.js";
 import { connect } from "react-redux";
@@ -15,10 +16,11 @@ function Airport({ flights, fetchFlightsData }) {
   const [arrivals, setArrivals] = useState(arrival);
   const [departures, setDepartures] = useState(departure);
   const [input, setInput] = useState("");
+  const [search, setSearch] = useState("");
   useEffect(() => {
     const params = new URLSearchParams(location.search);
-    const search = params.get("search");
-    setInput(search ? search : "");
+    let searchParam = params.get("search");
+    setSearch(searchParam ? searchParam : "");
   }, []);
   useEffect(() => {
     setArrivals(arrival);
@@ -43,8 +45,12 @@ function Airport({ flights, fetchFlightsData }) {
       item["planeTypeID.code"].toLowerCase().includes(input.toLowerCase())
     );
     setDepartures(filterDepartures);
+
+    setSearch(input);
+    History.push("search?=" + input);
+    setInput("");
   };
-  console.log(departures);
+
   return (
     <BrowserRouter>
       <div className="page">
@@ -58,6 +64,7 @@ function Airport({ flights, fetchFlightsData }) {
         <Routes>
           <Route exact path="/" element={null} />
           <Route
+            exact
             path="/departures"
             element={
               <Departures

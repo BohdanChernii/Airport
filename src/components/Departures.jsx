@@ -1,31 +1,26 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import moment from "moment";
-
+import { setTerminalColor } from "../prepareData.js";
 const Departures = ({ departure }) => {
   if (!departure || departure.length === 0) {
     return <p className="not-found">Вильотів не знайдено</p>;
   }
-  // const [filterFlights, setFilterFlights] = useState("");
-  // useEffect(() => {
-  //   const params = new URLSearchParams();
-  //   const search = params.get("search");
-  //   setFilterFlights(search ? search : "");
-  // });
+  setTerminalColor(departure);
   return (
     <div className="planes">
       <table className="flights__table">
-        <thead>
-          <tr className="flights__table-title title">
-            <th className="title-item">Термінал</th>
-            <th className="title-item">Розклад</th>
-            <th className="title-item">Напрямок</th>
-            <th className="title-item">Статус</th>
-            <th className="title-item">Авіакомпанія</th>
-            <th className="title-item">Рейс</th>
+        <thead className="flights__table-title title">
+          <tr className="title__row">
+            <th className="title__row-item">Термінал</th>
+            <th className="title__row-item">Розклад</th>
+            <th className="title__row-item">Напрямок</th>
+            <th className="title__row-item">Статус</th>
+            <th className="title__row-item">Авіакомпанія</th>
+            <th className="title__row-item">Рейс</th>
           </tr>
         </thead>
 
-        <tbody>
+        <tbody className="table-body table">
           {departure
             .filter(
               (item) =>
@@ -34,7 +29,17 @@ const Departures = ({ departure }) => {
             )
             .map((item) => (
               <tr className="table__row" key={item.ID}>
-                <td className="table__row-item terminal">{item.term}</td>
+                <td
+                  className="table__row-item terminal"
+                  style={{
+                    color: item.color,
+                    border: `3px solid ${item.color}`,
+                    borderRadius: "50%",
+                    textAlign: "center",
+                  }}
+                >
+                  {item.term}
+                </td>
                 <td className="table__row-item">
                   {moment(item.timeDepShedule).format("h:mm")}
                 </td>
@@ -52,7 +57,9 @@ const Departures = ({ departure }) => {
                     {item.airline.ua.name}
                   </span>
                 </td>
-                <td>{item["planeTypeID.code"]}</td>
+                <td className="table__row-item code">
+                  {item["planeTypeID.code"]}
+                </td>
               </tr>
             ))}
         </tbody>
