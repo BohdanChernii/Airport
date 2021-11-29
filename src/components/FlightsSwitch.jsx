@@ -1,16 +1,17 @@
-import React, { useState } from "react";
+import React from "react";
 import { NavLink } from "react-router-dom";
 import {
   faPlaneDeparture,
   faPlaneArrival,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 const FlightsSwitch = ({ input }) => {
   return (
     <div className="switchFlights">
       <NavLink
         to={`/departures?search=${input}`}
-        href="/departures"
+        href="departure"
         activeclassname="active"
         className="switchFlights__item switchFlights__item-departure"
       >
@@ -20,7 +21,6 @@ const FlightsSwitch = ({ input }) => {
 
       <NavLink
         to={`/arrivals?search=${input}`}
-        href="/arrivals"
         activeclassname="active"
         className="switchFlights__item switchFlights__item-arrival"
       >

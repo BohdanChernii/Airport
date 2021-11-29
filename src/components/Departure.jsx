@@ -1,11 +1,28 @@
-import React, { useEffect } from "react";
-import { setTerminalColor } from "../prepareData.js";
+import React, { useState, useEffect } from "react";
 import moment from "moment";
-const Arrivals = ({ arrival }) => {
-  if (!arrival || arrival.length === 0) {
-    return <p className="not-found">Прильотів не знайдено</p>;
+import { setTerminalColor } from "../prepareData.js";
+
+import { useLocation } from "react-router-dom";
+const Departures = ({ departure, arrival }) => {
+  let location = useLocation();
+
+  if (
+    !departure ||
+    departure.length === 0 ||
+    !arrival ||
+    arrival.length === 0
+  ) {
+    return <p className="not-found">не знайдено</p>;
   }
-  setTerminalColor(arrival);
+  const [flightsType, setFlightsType] = useState(departure);
+  useEffect(() => {
+    location.pathname === "/arrivals"
+      ? setFlightsType(arrival)
+      : setFlightsType(departure);
+  }, [location]);
+  setTerminalColor(flightsType);
+  console.log(location);
+
   return (
     <div className="planes">
       <table className="flights__table">
@@ -19,8 +36,9 @@ const Arrivals = ({ arrival }) => {
             <th className="title__row-item">Рейс</th>
           </tr>
         </thead>
+
         <tbody className="table-body table">
-          {arrival
+          {flightsType
             .filter(
               (item) =>
                 moment(item.actual).format("YYYY-MM-DD") ===
@@ -43,10 +61,10 @@ const Arrivals = ({ arrival }) => {
                   {moment(item.timeDepShedule).format("h:mm")}
                 </td>
                 <td className="table__row-item">
-                  {item["airportFromID.city"]}
+                  {item["airportToID.city"] || item["airportFromID.city"]}
                 </td>
                 <td className="table__row-item">
-                  Прилетів о {moment(item.timeTakeofFact).format("h:mm")}
+                  Вилетів о {moment(item.timeTakeofFact).format("h:mm")}
                 </td>
                 <td className="table__row-item aviacompany">
                   <img
@@ -68,4 +86,4 @@ const Arrivals = ({ arrival }) => {
     </div>
   );
 };
-export default Arrivals;
+export default Departures;
