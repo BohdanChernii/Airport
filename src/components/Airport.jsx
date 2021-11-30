@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Header from "./Header";
 import FindFlight from "./FindFlight";
 import FlightsSwitch from "./FlightsSwitch";
-import Departure from "./Departure";
+import Direction from "./Direction";
 import { allFlights } from "../flights/flights.selectors.js";
 import { fetchFlightsData } from "../flights/flights.actions.js";
 import { connect } from "react-redux";
@@ -50,7 +50,7 @@ function Airport({ flights, fetchFlightsData }) {
         <Switch>
           <Route exact path="/" />
           <Route path="/">
-            <Departure
+            <Direction
               input={input}
               departure={departures}
               arrival={arrivals}
